@@ -1,5 +1,9 @@
 const categoriesContainer = document.getElementById("categoriesContainer");
 const cardsContainer = document.getElementById("cardsContainer");
+const noVideoContainer = document.getElementById("noVideoContainer");
+const sort = document.getElementById("sort");
+
+let arrayOfCards = [];
 
 const loadCategories = async () => {
   const responce = await fetch(
@@ -32,11 +36,26 @@ const loadCards = async (id, ele) => {
     `https://openapi.programming-hero.com/api/videos/category/${id}`
   );
   let data = await responce.json();
-  displayCards(data.data);
+  arrayOfCards = [...data.data];
+  displayCards(arrayOfCards);
+  sort.addEventListener("click", () => {
+    let arrayOfViews = arrayOfCards.map((e) => parseInt(e.others.views));
+    arrayOfViews.sort(function (a, b) {
+      return b - a;
+    });
+    let newArrayOfCards = [];
+    arrayOfViews.forEach((e) => {
+      let target = arrayOfCards.find((ele) => parseInt(ele.others.views) === e);
+      newArrayOfCards.push(target);
+      arrayOfCards.splice(arrayOfCards.indexOf(target), 1);
+      displayCards(newArrayOfCards);
+    });
+  });
 };
 const displayCards = (array) => {
   if (array.length !== 0) {
     cardsContainer.innerHTML = "";
+    noVideoContainer.innerHTML = "";
     array.forEach((element) => {
       let second = element.others.posted_date;
       let hour, min;
@@ -48,9 +67,11 @@ const displayCards = (array) => {
       div.innerHTML = `
      <div class="">
         <div class="relative">
-        <p class="text-white bg-[#171717] py-1 px-2 text-sm rounded-lg absolute bottom-2 right-2 ">${
-          element.others.posted_date ? hour + "hrs" + " " + min + "min ago" : ""
-        }</p>
+        <p class="text-white bg-[#171717] py-1 px-2 text-sm rounded-lg absolute bottom-2 right-2 ${
+          element.others.posted_date ? "" : "hidden"
+        }">${
+        element.others.posted_date ? hour + "hrs" + " " + min + "min ago" : ""
+      }</p>
         <img class="rounded-lg h-[300px] md:h-[200px] w-full" src="${
           element.thumbnail
         }" alt="" />
@@ -68,7 +89,7 @@ const displayCards = (array) => {
                 element.authors[0].profile_name
               }</p>
               <img src=${
-                element.authors[0].verified ? "./t.png" : "./"
+                element.authors[0].verified ? "./images/blue_tick.png" : "./"
               } alt="" />
             </div>
             <p class="text-[#676767] text-sm"><span>${
@@ -82,17 +103,18 @@ const displayCards = (array) => {
     });
   } else {
     cardsContainer.innerHTML = "";
+    noVideoContainer.innerHTML = "";
     let div = document.createElement("div");
-    div.innerText = "NAi";
-    cardsContainer.appendChild(div);
+    div.innerHTML = `
+    <div class="flex flex-col items-center justify-center gap-3">
+      <img src="./images/no_video.png" alt="" />
+      <p class="text-[#171717] text-center text-3xl font-bold">
+        Oops!! Sorry, There is no content here
+      </p>
+    </div>
+    `;
+    noVideoContainer.appendChild(div);
   }
 };
 loadCategories();
 loadCards("1000");
-
-let a = "15147";
-
-let h = parseInt(parseInt(a) / 60 / 60);
-let m = parseInt(parseInt(a) / 60 - h * 60);
-
-// console.log(h, m);

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PH Tube</title>
-    <link rel="shortcut icon" href="./logo.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon" />
     <!--! Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- !DaisyUI -->
@@ -34,13 +34,13 @@
       class="container mx-auto flex justify-between items-center border-b py-6 md:py-8 px-2 sm:px-0"
     >
       <div class="flex gap-2">
-        <img src="./logo.png" alt="" />
+        <img src="./images/logo.png" alt="" />
         <span class="text-2xl font-bold"
           ><span class="text-[#FF1F3D]">PH</span> Tube</span
         >
       </div>
       <div class="">
-        <button class="btn btn-sm capitalize">sort by view</button>
+        <button id="sort" class="btn btn-sm capitalize">sort by view</button>
       </div>
       <div class="">
         <button
@@ -60,6 +60,7 @@
       id="cardsContainer"
       class="container mx-auto px-3 lg:px-0 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10 items-center justify-center"
     ></div>
+    <div id="noVideoContainer" class=""></div>
   </body>
   <script src="./main.js"></script>
 </html>
