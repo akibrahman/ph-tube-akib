@@ -21,7 +21,66 @@
       rel="stylesheet"
     />
   </head>
-  <body class="font-[Inter]">
-    Blog
+  <body class="font-[Inter] container mx-auto">
+    <div class="flex items-center py-5 border-b-2 border-[#ff1f3d]">
+      <a href="./index.html">
+        <button
+          class="btn btn-sm capitalize w-max bg-[#ff1f3d] text-white hover:bg-[#ff1f3d]"
+        >
+          back
+        </button>
+      </a>
+      <h1 class="flex-1 text-center font-semibold text-5xl">Blog Question</h1>
+    </div>
+    <div
+      class="mt-10 border border-[#ff1f3d] py-12 px-16 rounded-lg font-semibold flex flex-col gap-14 text-[#111]"
+    >
+      <div class="p-10 rounded-lg w-3/4 mx-auto bg-red-400">
+        <p class="text-xl">Q1. Discuss the scope of var, let, and const</p>
+        <p class="ml-16 mt-3 font-bold">
+          Ans:<br />
+          "let", "var", "const" are the keyWord to declare a variable. But their
+          scope are different. <br /><br />
+          Mainly "var" is function-scoped as well as global-scope. That means it
+          can be accessable before it's declaretion."var" is hoisted to the top
+          of the entire code. That's why, "var" is less safe than the others.
+          "var" can be re-assigned as well as can be re-declared. It holds it's
+          initial value 'undefined' <br /><br />
+          "let" is blocked-scoped, that means it can be accessed within the
+          curly braces. It cann't be accessed outside of the function or block.
+          "let" can be re-assigned but can't be re declared like "var". It has
+          no hoisting behaviour. <br /><br />
+          On the other Hand, "const" is also block-scoped and almost similar to
+          "let" but it can't be re-declared as well as re-assigned, this is one
+          of the main difference between "let" and "const". It's mandetory to
+          set a value to "const". It mainly used when there is no need to change
+          it's value.
+        </p>
+      </div>
+      <div class="p-10 rounded-lg w-3/4 mx-auto bg-red-400">
+        <p class="text-xl">Q2. Tell us the use cases of null and undefined</p>
+        <p class="ml-16 mt-3 font-bold">
+          Ans: <br />
+          Use Cases of "undefined" <br />
+          1. It's used to indicate missing value of a variable. <br />
+          2. As a default value in function parameters to handle missing
+          arguments. <br />
+          3. We can check that a variable is assigned a value or not.
+          <br /><br />
+          On the other hand, Type of null is 'Object'<br />
+          Use cases of "null"<br />1. To clear an Object or variable. <br />2.
+          To indicate intentional absence of value. <br />3. As a replacment of
+          a value that will assigned later.
+        </p>
+      </div>
+      <div class="p-10 rounded-lg w-3/4 mx-auto bg-red-400">
+        <p class="text-xl">Q1. Discuss the scope of var, let, and const</p>
+        <p class="ml-16 mt-3 font-bold">
+          Ans: Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam
+          eveniet magnam voluptas adipisci nisi officiis earum at fugiat, aut
+          debitis.
+        </p>
+      </div>
+    </div>
   </body>
 </html>

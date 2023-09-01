@@ -39,17 +39,10 @@ const loadCards = async (id, ele) => {
   arrayOfCards = [...data.data];
   displayCards(arrayOfCards);
   sort.addEventListener("click", () => {
-    let arrayOfViews = arrayOfCards.map((e) => parseInt(e.others.views));
-    arrayOfViews.sort(function (a, b) {
-      return b - a;
+    arrayOfCards.sort((x, y) => {
+      return parseInt(y.others.views) - parseInt(x.others.views);
     });
-    let newArrayOfCards = [];
-    arrayOfViews.forEach((e) => {
-      let target = arrayOfCards.find((ele) => parseInt(ele.others.views) === e);
-      newArrayOfCards.push(target);
-      arrayOfCards.splice(arrayOfCards.indexOf(target), 1);
-      displayCards(newArrayOfCards);
-    });
+    displayCards(arrayOfCards);
   });
 };
 const displayCards = (array) => {
@@ -84,7 +77,7 @@ const displayCards = (array) => {
             <p class="text-[#171717] text-base font-bold">
               ${element.title}
             </p>
-            <div class="flex gap-2 my-2">
+            <div class="flex gap-2 mt-2">
               <p class="text-[#676767] text-sm">${
                 element.authors[0].profile_name
               }</p>
